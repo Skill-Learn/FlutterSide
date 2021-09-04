@@ -54,24 +54,29 @@ class VideoList extends StatelessWidget {
     return ListView.builder(
         itemCount: 20,
         itemBuilder: (BuildContext ctx, index) {
-          return Container(
-            clipBehavior: Clip.hardEdge,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    color: Colors.black, width: 1.0, style: BorderStyle.solid)),
-            child: Column(
-              children: [
-                VideoTile(),
-                Text(
-                  "Title of the video",
-                ),
-                Text(
-                  "Teacher's name",
-                  style: TextStyle(fontSize: 10),
-                ),
-              ],
+          return GestureDetector(
+            onTap: () async {
+              final result = await Navigator.pushNamed( ctx, "/video_detail");
+            },
+            child: Container(
+              clipBehavior: Clip.hardEdge,
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                      color: Colors.black, width: 1.0, style: BorderStyle.solid)),
+              child: Column(
+                children: [
+                  VideoTile(),
+                  Text(
+                    "Title of the video",
+                  ),
+                  Text(
+                    "Teacher's name",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
             ),
           );
         });

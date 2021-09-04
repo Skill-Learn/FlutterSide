@@ -8,7 +8,7 @@ class VideoTile extends StatelessWidget{
         children: [
           Container(
             child: Image.asset(
-              'assets/video placeholder.png'
+              'video_placeholder.png'
             ),
           ),
         ],
