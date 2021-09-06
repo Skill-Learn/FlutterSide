@@ -1,11 +1,11 @@
-import 'package:meta/meta.dart';
+// import 'package:meta/meta.dart';
 
-class User{
-  final String name;
-  final String imageUrl;  
+// class User{
+//   final String name;
+//   final String imageUrl;  
 
-  const User({
-    @required this.name,
-    @required this.imageUrl,
-  })
-}
+//   const User({
+//     @required this.name,
+//     @required this.imageUrl,
+//   })
+// }
