@@ -1,16 +1,18 @@
-# skill_learn_client
+# Skill Learn
+This is a mobile app that allows users to enroll in different subscription based classes, where they can get either video or written lessons that are created by the teachers or content creators 
 
-A new Flutter project.
+## Features
 
-## Getting Started
+ - users can subscribe to any teacher they choose and view content, change the subscription type/plan, or unsubscribe
+ - content creators/teachers can create lessons, edit them or remove them as they wish
+ - content creators/teachers can also decide which video goes in which plan (some may go in the basic plan, others in pro/premium)
+ - admins can ban users/content creators and they can also ban/remove individual videos that may be inappropriate
 
-This project is a starting point for a Flutter application.
+### Group Memebers
+  1. Elias Melaku - ATR/9508/11
+  2. Kaleb Besufekad - ATR/7065/11
+  3. Kirubel Teka - ATR/4407/11
+  4. Natnael Bekabtu - ATR/7198/11
+  5. Yafet Lulseged - ATR/4090/11
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
