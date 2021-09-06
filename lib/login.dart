@@ -141,6 +141,15 @@ class _MyLoginPageState extends State<MyLoginPage> {
                         Center(
                           child: ImageIcon(AssetImage('assets/facebook.png')),
                         ),
+                        SizedBox(width: 10.0),
+                        Center(
+                          child: Text(
+                            'Login with Facebook',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Montserrat'),
+                          ),
+                        )
                       ],
                     ),
                   ),
