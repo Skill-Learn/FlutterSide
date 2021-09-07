@@ -1,10 +1,6 @@
-import 'package:skill_learn_client/components/Background.dart';
-import 'package:skill_learn_client/components/RoundedButton.dart';
-import 'package:skill_learn_client/main.dart';
+import 'package:skill_learn_client/auth/screens/components/components.dart';
 import 'package:flutter/material.dart';
-import 'package:skill_learn_client/screens/Signup.dart';
-import 'package:skill_learn_client/screens/Login.dart';
-import 'package:skill_learn_client/constants.dart';
+import 'package:skill_learn_client/RouteGenerator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeScreen extends StatelessWidget {

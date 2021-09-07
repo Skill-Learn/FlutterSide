@@ -1,16 +1,7 @@
-import 'dart:convert';
-import 'dart:async';
-import 'package:';
-import 'package:skill_learn_client/user/components/components_login_register/AlreadyHaveAnAccountCheck.dart';
-import 'package:skill_learn_client/user/components/components_login_register/Background.dart';
-import 'package:skill_learn_client/user/components/components_login_register/RoundedButton.dart';
-import 'package:skill_learn_client/user/components/components_login_register/RoundedInputField.dart';
-import 'package:skill_learn_client/user/components/components_login_register/RoundedPasswordField.dart';
+import 'package:skill_learn_client/auth/screens/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:http/http.dart' as http;
-
-import '../main.dart';
+import 'package:skill_learn_client/RouteGenerator.dart';
 
 class Login extends StatelessWidget {
   var email;
@@ -52,7 +43,8 @@ class Login extends StatelessWidget {
                 text: "LOGIN",
                 press: () {
                   print('$email $password');
-                  login(email, password);
+                  // login(email, password);
+                  // add the login consumer here
                 },
               ),
               SizedBox(height: size.height * 0.03),

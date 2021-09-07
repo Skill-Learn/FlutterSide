@@ -1,18 +1,8 @@
-import 'dart:convert';
-
-import 'package:skill_learn_client/components/AlreadyHaveAnAccountCheck.dart';
-import 'package:skill_learn_client/components/Background.dart';
-import 'package:skill_learn_client/components/RoundedButton.dart';
-import 'package:skill_learn_client/components/RoundedInputField.dart';
-import 'package:skill_learn_client/components/RoundedPasswordField.dart';
-import 'package:skill_learn_client/screens/Login.dart';
-import 'package:skill_learn_client/screens/UserModel.dart';
+import 'package:skill_learn_client/auth/screens/components/components.dart';
+import 'loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../main.dart';
+import 'package:skill_learn_client/RouteGenerator.dart';
 
 // Sign up page widget
 class Signup extends StatelessWidget {
@@ -54,7 +44,8 @@ class Signup extends StatelessWidget {
                   text: "SIGNUP",
                   press: () async {
                     print('$email $password');
-                    await signup(email, password);
+                    // Add the signup consumer here
+
                     Navigator.of(context).pushNamed(RouteGenerator.landingPage);
                   },
                 ),

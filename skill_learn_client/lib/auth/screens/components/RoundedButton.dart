@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:authentication/constants.dart';
+import 'constants.dart';
 
 // ignore: must_be_immutable
 class RoundedButton extends StatelessWidget {
