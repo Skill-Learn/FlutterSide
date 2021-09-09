@@ -24,7 +24,7 @@ class Login extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.03),
               SvgPicture.asset(
-                "images/signin_solid.svg",
+                "assets/signin_solid.svg",
                 height: size.height * 0.15,
               ),
               SizedBox(height: size.height * 0.03),

@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:skill_learn_client/RouteGenerator.dart';
 
 // Sign up page widget
+// ignore: must_be_immutable
 class Signup extends StatelessWidget {
   var email;
   var password;
@@ -26,7 +27,7 @@ class Signup extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.03),
                 SvgPicture.asset(
-                  "images/signup_solid.svg",
+                  "assets/signup_solid.svg",
                   height: size.height * 0.15,
                 ),
                 RoundedInputField(

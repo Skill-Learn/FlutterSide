@@ -13,31 +13,29 @@ import 'content/bloc/blocs.dart';
 import 'content/data_provider/article-data-provider.dart';
 import 'content/repository/article-repository.dart';
 import 'content/screens/articles/article_list.dart';
+import 'RouteGenerator.dart';
 
 void main() {
-  Bloc.observer = SimpleBlocObserver();
+  // Bloc.observer = SimpleBlocObserver();
 
-  final ArticleRepository articleRepository = ArticleRepository(ArticleDataProvider());
+  // final ArticleRepository articleRepository =
+  //     ArticleRepository(ArticleDataProvider());
 
-  runApp(SkillLearn(articleRepository: articleRepository),);
+  runApp(MyApp());
 }
 
 class SkillLearn extends StatefulWidget {
-
   final ArticleRepository articleRepository;
-  
 
-  SkillLearn({required this.articleRepository});  
+  SkillLearn({required this.articleRepository});
 
   @override
   _SkillLearnState createState() => _SkillLearnState();
 }
 
 class _SkillLearnState extends State<SkillLearn> {
-
   int _currentIndex = 0;
-  
-  
+
   final tabs = [
     ListView(
       // mainAxisSize: MainAxisSize.max,
@@ -69,7 +67,10 @@ class _SkillLearnState extends State<SkillLearn> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled, color: Colors.black,),
+              icon: Icon(
+                Icons.home_filled,
+                color: Colors.black,
+              ),
               label: "Home",
             ),
             BottomNavigationBarItem(
@@ -92,8 +93,7 @@ class _SkillLearnState extends State<SkillLearn> {
   }
 }
 
-
-class Articles extends StatelessWidget{
+class Articles extends StatelessWidget {
   final SkillLearn widget;
 
   const Articles({required this.widget});
@@ -101,10 +101,29 @@ class Articles extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
-      value: this.widget.articleRepository ,
-      child: BlocProvider(create: (context) => ArticleBloc(articleRepository: this.widget.articleRepository)
-      ..add(ArticleLoad()),
-      child: ArticleList(),
-      ),);
+      value: this.widget.articleRepository,
+      child: BlocProvider(
+        create: (context) =>
+            ArticleBloc(articleRepository: this.widget.articleRepository)
+              ..add(ArticleLoad()),
+        child: ArticleList(),
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      initialRoute: RouteGenerator.homePage,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+    );
   }
 }

@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.04),
-              SvgPicture.asset("images/helping_hand.svg",
+              SvgPicture.asset("assets/helping_hand.svg",
                   height: size.height * 0.25),
               SizedBox(height: size.height * 0.09),
               RoundedButton(
