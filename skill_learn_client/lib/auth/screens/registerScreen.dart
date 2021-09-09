@@ -1,3 +1,6 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_learn_client/auth/bloc/blocs.dart';
+import 'package:skill_learn_client/auth/models/user.dart';
 import 'package:skill_learn_client/auth/screens/components/components.dart';
 import 'loginScreen.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +46,17 @@ class Signup extends StatelessWidget {
                 ),
                 RoundedButton(
                   text: "SIGNUP",
-                  press: () async {
+                  press: () {
                     print('$email $password');
                     // Add the signup consumer here
+                    if (!email || !password || password.toString().length < 8) {
+                      print("Invalid inputs");
+                      return;
+                    }
+                    // the entry is valid register the event
+                    final UserEvent event = UserSignUp(
+                        User(id: null, email: email, password: password));
+                    BlocProvider.of<AuthenticationBloc>(context).add(event);
 
                     Navigator.of(context).pushNamed(RouteGenerator.landingPage);
                   },

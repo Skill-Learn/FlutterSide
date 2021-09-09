@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skill_learn_client/auth/models/user.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,6 +17,10 @@ class UserDataProvider {
             }));
 
     if (response.statusCode == 201) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var parse = jsonDecode(response.body);
+
+      await prefs.setString('token', parse["token"]);
       return User.fromJson(jsonDecode(response.body));
     }
     {
@@ -32,6 +37,10 @@ class UserDataProvider {
               "password": user.password,
             }));
     if (response.statusCode == 201) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var parse = jsonDecode(response.body);
+
+      await prefs.setString('token', parse["token"]);
       return User.fromJson(jsonDecode(response.body));
     }
     throw Exception("Failed to login user");
