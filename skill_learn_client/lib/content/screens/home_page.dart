@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:skill_learn_client/content/screens/components/video_detail.dart';
 import 'package:skill_learn_client/content/screens/components/video_tile.dart';
-import 'package:sticky_headers/sticky_headers/widget.dart';
+
+import 'articles/article_list.dart';
+// import 'package:sticky_headers/sticky_headers/widget.dart';
+
+
+import 'package:skill_learn_client/content/bloc/blocs.dart';
+import 'package:skill_learn_client/content/bloc_observer.dart';
+import 'package:skill_learn_client/content/data_provider/article-data-provider.dart';
+import 'package:skill_learn_client/content/repository/article-repository.dart';
 
 class HomePage extends StatefulWidget {
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -18,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               appBar: AppBar(
                 toolbarHeight: 51,
                 bottom: TabBar(
-                  indicatorWeight: 5.0,
+                  indicatorWeight: 3.0,
                   automaticIndicatorColorAdjustment: true,
                   tabs: [
                     Tab(
@@ -55,9 +65,7 @@ class VideoList extends StatelessWidget {
         itemCount: 20,
         itemBuilder: (BuildContext ctx, index) {
           return GestureDetector(
-            onTap: () async {
-              final result = await Navigator.pushNamed( ctx, "/video_detail");
-            },
+            onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (_) => VideoDetail()))},
             child: Container(
               clipBehavior: Clip.hardEdge,
               margin: EdgeInsets.all(10),
@@ -82,32 +90,32 @@ class VideoList extends StatelessWidget {
         });
   }
 }
-class ArticleList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 20,
-        itemBuilder: (BuildContext ctx, index) {
-          return Container(
-            clipBehavior: Clip.hardEdge,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    color: Colors.black, width: 1.0, style: BorderStyle.solid)),
-            child: Column(
-              children: [
-                VideoTile(),
-                Text(
-                  "Title of the Article",
-                ),
-                Text(
-                  "Teacher's name",
-                  style: TextStyle(fontSize: 10),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-}
+// class ArticleList extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder(
+//         itemCount: 20,
+//         itemBuilder: (BuildContext ctx, index) {
+//           return Container(
+//             clipBehavior: Clip.hardEdge,
+//             margin: EdgeInsets.all(10),
+//             decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(10),
+//                 border: Border.all(
+//                     color: Colors.black, width: 1.0, style: BorderStyle.solid)),
+//             child: Column(
+//               children: [
+//                 VideoTile(),
+//                 Text(
+//                   "Title of the Article",
+//                 ),
+//                 Text(
+//                   "Teacher's name",
+//                   style: TextStyle(fontSize: 10),
+//                 ),
+//               ],
+//             ),
+//           );
+//         });
+//   }
+// }

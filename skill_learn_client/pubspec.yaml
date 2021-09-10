@@ -30,6 +30,7 @@ dependencies:
   equatable: ^2.0.3
   http: ^0.13.3
   sticky_headers: ^0.2.0
+  font_awesome_flutter: ^9.1.0
 
 dev_dependencies:
   flutter_test:
