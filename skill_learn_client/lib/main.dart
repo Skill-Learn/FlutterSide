@@ -4,6 +4,7 @@ import 'package:skill_learn_client/content/bloc_observer.dart';
 // import 'package:skill_learn_client/content/screens/components/home_top_image.dart';
 // import 'package:skill_learn_client/content/screens/components/video_tile.dart';
 import 'package:skill_learn_client/content/screens/home_page.dart';
+import 'package:skill_learn_client/user/screens/profile_page.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,10 +49,10 @@ class _SkillLearnState extends State<SkillLearn> {
         ),
       ],
     ),
-    
     Center(
-      child: Text("Profile Page"),
+      child: Text("Second Page"),
     ),
+    Profile(),
   ];
 
   @override
