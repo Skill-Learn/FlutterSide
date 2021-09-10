@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:skill_learn_client/content/screens/components/home_top_image.dart';
 // import 'package:skill_learn_client/content/screens/components/video_tile.dart';
 import 'package:skill_learn_client/content/screens/home_page.dart';
+import 'package:skill_learn_client/user/screens/profile_page.dart';
 
 void main() => runApp(SkillLearn());
 
@@ -27,9 +28,7 @@ class _SkillLearnState extends State<SkillLearn> {
     Center(
       child: Text("Second Page"),
     ),
-    Center(
-      child: Text("Profile Page"),
-    ),
+    Profile(),
   ];
 
   @override
