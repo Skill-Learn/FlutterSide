@@ -26,7 +26,6 @@ class ArticleCreate extends ArticleEvent {
   @override
   String toString() => 'Article Created {article: $article}';
 }
-
 class ArticleUpdate extends ArticleEvent {
   final Article article;
 

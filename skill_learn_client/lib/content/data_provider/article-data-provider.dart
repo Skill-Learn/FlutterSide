@@ -4,7 +4,7 @@ import 'package:skill_learn_client/content/models/models.dart';
 import 'package:http/http.dart' as http;
 
 class ArticleDataProvider {
-  static final String _baseURL = "http://localhost:3000/api/articles";
+  static final String _baseURL = "http://localhost:3000/api/articles/test";
 
   Future<Article> create(Article article) async {
     final http.Response response = await http.post(Uri.parse(_baseURL),
@@ -13,7 +13,7 @@ class ArticleDataProvider {
           "title": article.title,
           "desciription": article.description,
           "content": article.content,
-          "creator": article.creator,
+          // "creator": article.creator,
           "date": article.date,
         }));
 
@@ -36,13 +36,15 @@ class ArticleDataProvider {
   }
 
   Future<List<Article>> fetchAll() async {
+    
     final response = await http.get(Uri.parse(_baseURL));
+    print(response);
 
-    if (response.statusCode == 200) {
+    if (response.statusCode != 200) {
       final articles = jsonDecode(response.body) as List;
       return articles.map((e) => Article.fromJson(e)).toList();
     } else {
-      throw Exception("Could not fetch said article");
+      throw Exception("Could not fetch articles");
     }
   }
 

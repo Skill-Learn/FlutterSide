@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_learn_client/content/bloc_observer.dart';
 // import 'package:skill_learn_client/content/screens/components/home_top_image.dart';
 // import 'package:skill_learn_client/content/screens/components/video_tile.dart';
 import 'package:skill_learn_client/content/screens/home_page.dart';
+import 'package:skill_learn_client/content/screens/videos/videos.dart';
+// import 'package:skill_learn_client/user/screens/creators_list.dart';
 import 'package:skill_learn_client/user/screens/profile_page.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_learn_client/user/screens/subscription.dart';
 
 import 'content/bloc_observer.dart';
-import 'content/bloc/blocs.dart';
+// import 'content/bloc/blocs.dart';
 import 'content/data_provider/article-data-provider.dart';
 import 'content/repository/article-repository.dart';
-import 'content/screens/articles/article_list.dart';
+// import 'content/screens/articles/article_list.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
@@ -30,12 +33,21 @@ class SkillLearn extends StatefulWidget {
   SkillLearn({required this.articleRepository});  
 
   @override
-  _SkillLearnState createState() => _SkillLearnState();
+  _SkillLearnState createState() => _SkillLearnState(articleRepository: articleRepository);
 }
 
 class _SkillLearnState extends State<SkillLearn> {
 
+  ArticleRepository articleRepository;
+
+  _SkillLearnState({required this.articleRepository});
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    ArticleRepository articleRepository1 = this.articleRepository;
+    super.initState();
+  }
   
   
   final tabs = [
@@ -43,28 +55,27 @@ class _SkillLearnState extends State<SkillLearn> {
       // mainAxisSize: MainAxisSize.max,
       children: [
         // VideoTile(),
-        HomePage(),
+        // HomePage(articleRepository: widget.articleRepository,),
         SizedBox(
           height: 30,
         ),
       ],
     ),
-    Center(
-      child: Text("Second Page"),
-    ),
+    // HomePage(articleRepository: articleRepository,),
+    Subscription(),
     Profile(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final String message = "Message";
+    // final String message = "Message";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Skill Learn"),
         ),
-        body: tabs[_currentIndex],
+        body: HomePage(articleRepository: articleRepository,),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           items: [
@@ -87,24 +98,29 @@ class _SkillLearnState extends State<SkillLearn> {
             })
           },
         ),
+        floatingActionButton: FloatingActionButton(onPressed: (){
+          print("I'm printing");
+        },
+          child: Icon(Icons.add),),
+
       ),
     );
   }
 }
 
 
-class Articles extends StatelessWidget{
-  final SkillLearn widget;
+// class Articles extends StatelessWidget{
+//   final SkillLearn widget;
 
-  const Articles({required this.widget});
+//   const Articles({required this.widget});
 
-  @override
-  Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: this.widget.articleRepository ,
-      child: BlocProvider(create: (context) => ArticleBloc(articleRepository: this.widget.articleRepository)
-      ..add(ArticleLoad()),
-      child: ArticleList(),
-      ),);
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return RepositoryProvider.value(
+//       value: this.widget.articleRepository ,
+//       child: BlocProvider(create: (context) => ArticleBloc(articleRepository: this.widget.articleRepository)
+//       ..add(ArticleLoad()),
+//       child: ArticleList(),
+//       ),);
+//   }
+// }

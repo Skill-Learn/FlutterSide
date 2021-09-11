@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:skill_learn_client/content/bloc/article_bloc.dart';
-import 'package:skill_learn_client/content/bloc/article_event.dart';
+import 'package:skill_learn_client/content/bloc/articles/article_bloc.dart';
+import 'package:skill_learn_client/content/bloc/articles/article_event.dart';
 import 'package:skill_learn_client/content/models/article.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'article_route.dart';
+import 'article_add.dart';
 import 'article_list.dart';
 
 class ArticleDetail extends StatelessWidget {

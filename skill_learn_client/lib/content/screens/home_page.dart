@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_learn_client/content/screens/components/video_detail.dart';
 import 'package:skill_learn_client/content/screens/components/video_tile.dart';
 
@@ -12,6 +13,9 @@ import 'package:skill_learn_client/content/data_provider/article-data-provider.d
 import 'package:skill_learn_client/content/repository/article-repository.dart';
 
 class HomePage extends StatefulWidget {
+  final ArticleRepository articleRepository;
+
+  HomePage({required this.articleRepository});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -49,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               body: TabBarView(
                 children: [
                  VideoList(),
-                 ArticleList(),
+                 Articles(widget: widget,),
                 ],
               ),
             ),
@@ -119,3 +123,18 @@ class VideoList extends StatelessWidget {
 //         });
 //   }
 // }
+class Articles extends StatelessWidget{
+  final HomePage widget;
+
+  const Articles({required this.widget});
+
+  @override
+  Widget build(BuildContext context) {
+    return RepositoryProvider.value(
+      value: this.widget.articleRepository ,
+      child: BlocProvider(create: (context) => ArticleBloc(articleRepository: this.widget.articleRepository)
+      ..add(ArticleLoad()),
+      child: ArticleList(),
+      ),);
+  }
+}

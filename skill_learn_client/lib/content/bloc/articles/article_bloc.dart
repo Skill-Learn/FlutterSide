@@ -14,7 +14,9 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     if (event is ArticleLoad) {
       yield ArticleLoading();
       try {
+        print("trying to print articles");
         final articles = await articleRepository.fetchAll();
+        print(articles);
         yield ArticleOperationSuccess(articles);
       } catch (_) {
         yield ArticleOperationFailure();

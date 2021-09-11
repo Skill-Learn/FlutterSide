@@ -13,7 +13,9 @@ class ArticleRepository {
     return this.dataProvider.update(id, article);
   }
   Future<List<Article>> fetchAll() async {
-    return this.dataProvider.fetchAll();
+    // print(this.dataProvider.fetchAll());
+    return await this.dataProvider.fetchAll();
+    
   }
   Future<void> delete(int id) async {
     return this.dataProvider.delete(id);
