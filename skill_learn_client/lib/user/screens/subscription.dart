@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:myapp/on_hover.dart';
+import 'package:skill_learn_client/content/models/creator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_learn_client/content/models/models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skill_learn_client/content/repository/user-repository.dart';
+
+Future<int> getUserIdPreferences() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String userId = prefs.getString("userId").toString();
+  return int.parse(userId);
+}
 
 class Subscription extends StatefulWidget {
   @override
@@ -8,13 +18,33 @@ class Subscription extends StatefulWidget {
 }
 
 class _SubscriptionState extends State<Subscription> {
+  User currentUser = User();
+  int currentUserId = 1;
+  final myUsersList = [];
+
   @override
   void initState() {
+    getUserIdPreferences().then(_updateCurrentUserId);
     super.initState();
+    fetchUser();
+  }
+
+  void fetchUser() async {
+    // var response = await userRepository.fetchById(currentUserId);
+    // setState(() {
+    //   currentUser = User.fromJson(response);
+    // });
+  }
+
+  void _updateCurrentUserId(int userid) {
+    setState(() {
+      this.currentUserId = userid;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final creator = ModalRoute.of(context)?.settings.arguments as Creator;
     return Container(
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -111,7 +141,14 @@ class _SubscriptionState extends State<Subscription> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            setState(() {});
+                            var subscriptionList =
+                                subscriptionsList(creator, currentUser, "free");
+                            // final UserEvent event = UserUpdate(
+                            //   User(
+                            //       id: CurrentUser.id,
+                            //       password: CurrrentUser.password,
+                            //       subscriptions: subscriptionList),
+                            // );
                           },
                           child: Container(
                             width: 100,
@@ -211,7 +248,19 @@ class _SubscriptionState extends State<Subscription> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            setState(() {});
+                            var subscriptionList =
+                                subscriptionsList(creator, currentUser, "pro");
+                            // final UserEvent event = UserUpdate(
+                            //   User(
+                            //       id: CurrentUser.id,
+                            //       password: CurrrentUser.password,
+                            //       subscriptions: subscriptionList),
+                            // );
+                            // BlocProvider.of<UserBloc>(context).add(event);
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                "/",
+                                // CoursesList.routeName,
+                                (route) => false);
                           },
                           child: Container(
                             width: 100,
@@ -251,4 +300,18 @@ class _SubscriptionState extends State<Subscription> {
       ),
     );
   }
+}
+
+List<dynamic> subscriptionsList(var creator, var currentUser, String? subType) {
+  var subscriptionMap = (currentUser["subscriptions"]);
+  for (int i = 0; i < ((subscriptionMap)!.length); i++) {
+    if ((subscriptionMap)!.elementAt(i).keys.first == creator.username) {
+      (subscriptionMap)!.elementAt(i)[creator.username] == subType;
+      return currentUser["subscription"];
+    }
+  }
+  return currentUser["subscription"];
+  // Navigator.of(context).pushNamed(
+  //     CreatorsDetail.routeName,
+  //     arguments: creators.elementAt(index));
 }
