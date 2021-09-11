@@ -1,23 +1,22 @@
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:skill_learn_client/content/models/article.dart';
 import 'package:equatable/equatable.dart';
-
 
 abstract class ArticleEvent extends Equatable {
   const ArticleEvent();
 }
 
 class ArticleLoad extends ArticleEvent {
-  const ArticleLoad(); 
+  const ArticleLoad();
 
   @override
   List<Object> get props => [];
 }
 
 class ArticleCreate extends ArticleEvent {
-  final Article article; 
-   
+  final Article article;
+
   const ArticleCreate(this.article);
 
   @override
@@ -37,8 +36,8 @@ class ArticleUpdate extends ArticleEvent {
 
   @override
   String toString() => 'Article Updated {article: $article}';
-
 }
+
 class ArticleDelete extends ArticleEvent {
   final int id;
 
@@ -49,5 +48,4 @@ class ArticleDelete extends ArticleEvent {
 
   @override
   String toString() => 'Article Deleted {article: $id}';
-
 }
