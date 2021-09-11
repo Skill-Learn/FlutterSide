@@ -7,15 +7,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'article_detail.dart';
 
 class ArticleList extends StatelessWidget {
+
+  final routname = "/";
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlocBuilder<ArticleBloc, ArticleState>(
           builder: (_, state) {
-      // if (state is ArticleOperationFailure) {
-      //   return Text('Could not load articles');
-      // }
+      if (state is ArticleOperationFailure) {
+        return Text('Could not load articles');
+      }
 
       if (state is ArticleOperationSuccess) {
         final articles = state.articles;

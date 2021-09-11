@@ -98,10 +98,7 @@ class _SkillLearnState extends State<SkillLearn> {
             })
           },
         ),
-        floatingActionButton: FloatingActionButton(onPressed: (){
-          print("I'm printing");
-        },
-          child: Icon(Icons.add),),
+        
 
       ),
     );
